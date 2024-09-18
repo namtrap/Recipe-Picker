@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Måltidssystem</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Bygg Din Måltid</h1>
+
+    <!-- Steg 1: Välj Protein -->
+    <div id="step1">
+        <h2>Steg 1: Välj Protein</h2>
+        <button onclick="selectProtein('nötfärs')">Nötfärs</button>
+        <button onclick="selectProtein('kyckling')">Kyckling</button>
+        <p id="selected-protein">Vald protein: Ingen</p>
+    </div>
+
+    <!-- Steg 2: Välj Kryddning -->
+    <div id="step2" style="display:none;">
+        <h2>Steg 2: Välj Kryddning</h2>
+        <div id="kryddning-options"></div>
+        <p id="selected-kryddning">Vald kryddning: Ingen</p>
+        <button id="back-to-step1" onclick="goBackToStep(1)" style="display:none;">Backa till Steg 1</button>
+    </div>
+
+    <!-- Steg 3: Välj Sås -->
+    <div id="step3" style="display:none;">
+        <h2>Steg 3: Välj Sås</h2>
+        <div id="sauce-options"></div>
+        <p id="selected-sauce">Vald sås: Ingen</p>
+        <button id="back-to-step2" onclick="goBackToStep(2)" style="display:none;">Backa till Steg 2</button>
+    </div>
+
+    <!-- Steg 4: Välj Kolhydrat och Sallad -->
+    <div id="step4" style="display:none;">
+        <h2>Steg 4: Välj Kolhydrat och Sallad</h2>
+        <div id="carb-options"></div>
+        <p id="selected-carb">Vald kolhydrat och sallad: Ingen</p>
+        <button id="back-to-step3" onclick="goBackToStep(3)" style="display:none;">Backa till Steg 3</button>
+    </div>
+
+<!-- Sammanfattning -->
+<div id="summary" style="display:none;">
+    <h2>Din valda måltid</h2>
+    <p>Protein: <span id="summary-protein">Ingen</span></p>
+    <p>Kryddning: <span id="summary-kryddning">Ingen</span></p>
+    <p>Sås: <span id="summary-sauce">Ingen</span></p>
+    <p>Kolhydrat och Sallad: <span id="summary-carb">Ingen</span></p>
+
+    <!-- Knapp för att börja om -->
+    <button onclick="resetForm()">Börja om</button>
+
+    <!-- Knapp för att generera recept -->
+    <button onclick="generateRecipe()">Generera recept</button>
+
+    <!-- Här kommer receptet att visas -->
+    <div id="recipe-output" style="margin-top: 20px;"></div>
+</div>
+
+    <script src="script.js"></script>
+        <script src="recipe.js"></script>
+</body>
+</html>
