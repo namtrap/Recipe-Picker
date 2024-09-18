@@ -22,7 +22,10 @@ let skafferiDynamiska = {
     'Basilika (Fryst)': true,
     'Timjan': true,
     'Rosmarin': true,
-    'Dill': true
+    'Dill': true,
+    'Sesamfrön': true,
+    'Majonnäs': true
+
 };
 
 
@@ -168,10 +171,30 @@ if (protein === 'nötfärs') {
         } else if (sauce === 'keso') {
             recipe += `<p>2. Servera <span class="blue-text">200g keso</span> som ett lätt tillbehör.</p>`;
             shoppingList.categories['Mejeri'].push('200g Keso');
-        } else if (sauce === 'sojasås') {
-            recipe += `<p>2. Blanda <span class="blue-text">3 msk sojasås</span> med <span class="blue-text">1 msk risvinäger</span> och <span class="blue-text">1 tsk sesamolja</span> för en snabb asiatisk dressing.</p>`;
-            shoppingList.categories['Skafferi'].push('Sojasås', 'Risvinäger', 'Sesamolja');
-        }
+
+
+
+} else if (sauce === 'sojamajonäs') {  // Lägg till sojamajonäs
+    recipe += `<p>2. Gör en snabb <span class="blue-text">sojamajonäs</span> genom att blanda <span class="blue-text">2 dl majonnäs</span> med <span class="blue-text">1 msk sojasås</span> och smaka av med lite <span class="blue-text">limejuice</span>.</p>`;
+    
+    // Lägg till ingredienser till inköpslistan
+    kontrolleraSkafferiVaror('Majonnäs');
+    kontrolleraSkafferiVaror('Sojasås');
+    shoppingList.categories['Frukt & Grönt'].push('1 Lime');
+
+
+
+} else if (sauce === 'sesamdressing') {  // Uppdaterad sesamdressing
+    recipe += `<p>2. Gör en snabb <span class="blue-text">sesamdressing</span> genom att blanda <span class="blue-text">2 msk sesamolja</span>, <span class="blue-text">1 msk risvinäger</span>, <span class="blue-text">1 msk sojasås</span>, <span class="green-text">1 tsk sesamfrön</span> och <span class="green-text">1 tsk ingefära (torkad)</span>. Smaksätt med en nypa socker och rör om väl.</p>`;
+    
+    // Lägg till ingredienser till inköpslistan
+    kontrolleraSkafferiVaror('Sesamolja');
+    kontrolleraSkafferiVaror('Risvinäger');
+    kontrolleraSkafferiVaror('Sojasås');
+    kontrolleraSkafferiVaror('Sesamfrön');  // Sesamfrön ska läggas till under "Se till att ha hemma"
+    kontrolleraSkafferiVaror('Ingefära (torkad)');  // Lägg till ingefära
+
+}
 
 // Kolhydrater och sallad med gul text
 if (carb === 'bulgursallad') {
@@ -182,10 +205,22 @@ if (carb === 'bulgursallad') {
 } else if (carb === 'potatis och rotfrukter') {
     recipe += `<p>3. Rosta <span class="yellow-text">600g potatis</span> och <span class="yellow-text">400g rotfrukter</span> (morötter, palsternacka) i olja med salt och peppar i ugnen på 200°C i cirka 30 minuter.</p>`;
     shoppingList.categories['Frukt & Grönt'].push('600g Potatis', '400g Rotfrukter (Morötter, Palsternacka)');
+
+
+
 } else if (carb === 'wraps') {
-    recipe += `<p>3. Fyll <span class="yellow-text">wraps</span> med kyckling/nötfärs, sås och färska grönsaker som <span class="yellow-text">2 tomater</span>, <span class="yellow-text">1 gurka</span> och sallad.</p>`;
-    shoppingList.categories['Skafferi'].push('Wraps');
-    shoppingList.categories['Frukt & Grönt'].push('2 Tomater', '1 Gurka', 'Sallad');
+    if (kryddning === 'asiatiskt') {
+        recipe += `<p>3. Fyll <span class="yellow-text">wraps</span> med kyckling/nötfärs, sås och färska grönsaker som <span class="yellow-text">1 strimlad morot</span> och <span class="yellow-text">1 gurka (skuren i halvmånar)</span>.</p>`;
+        shoppingList.categories['Skafferi'].push('Wraps');
+        shoppingList.categories['Frukt & Grönt'].push('1 Morot', '1 Gurka');
+    } else {
+        recipe += `<p>3. Fyll <span class="yellow-text">wraps</span> med kyckling/nötfärs, sås och färska grönsaker som <span class="yellow-text">2 tomater</span>, <span class="yellow-text">1 gurka</span> och sallad.</p>`;
+        shoppingList.categories['Skafferi'].push('Wraps');
+        shoppingList.categories['Frukt & Grönt'].push('2 Tomater', '1 Gurka', 'Sallad');
+    }
+
+
+
 } else if (carb === 'ris') {
     recipe += `<p>3. Koka <span class="yellow-text">2 dl ris</span> och servera med kyckling/nötfärs och sås.</p>`;
     shoppingList.categories['Skafferi'].push('2 dl Ris');
