@@ -90,32 +90,45 @@ if (kryddning === 'asiatiskt') {
         // Gör proteintexten röd
         const proteinText = `<span class="red-text">${protein}</span>`;
 
-        // Receptet för protein
-        if (protein === 'nötfärs') {
-            if (carb === 'wraps') {
-                recipe += `<p>1. Stek 500g ${proteinText} tillsammans med ${kryddblandning}, <span class="green-text">2 vitlöksklyftor</span> och <span class="green-text">1 hackad lök</span> tills färsen är genomstekt. Fyll <span class="yellow-text">wraps</span> med färs och tillsätt sås och grönsaker.</p>`;
-                shoppingList.categories['Kött & Fågel'].push('500g Nötfärs');
-                kontrolleraSkafferiVaror('Vitlök');
-                kontrolleraSkafferiVaror('Lök');
-            } else {
-                recipe += `<p>1. Blanda 500g ${proteinText} med ${kryddblandning}, <span class="green-text">2 vitlöksklyftor</span> och <span class="green-text">1 hackad lök</span>. Forma biffar och stek dem i olja tills de är genomstekta.</p>`;
-                shoppingList.categories['Kött & Fågel'].push('500g Nötfärs');
-                 kontrolleraSkafferiVaror('Vitlök');
-                kontrolleraSkafferiVaror('Lök');
-            }
-        } else if (protein === 'kyckling') {
-            if (carb === 'wraps') {
-                recipe += `<p>1. Strimla 500g ${proteinText} och stek den med ${kryddblandning}, <span class="green-text">2 vitlöksklyftor</span> och <span class="green-text">1 hackad lök</span> tills kycklingen är genomstekt. Fyll <span class="yellow-text">wraps</span> med kyckling, sås och grönsaker.</p>`;
-                shoppingList.categories['Kött & Fågel'].push('500g Kycklingfilé (eller fryst)');
-                kontrolleraSkafferiVaror('Vitlök');
-                kontrolleraSkafferiVaror('Lök');
-            } else {
-                recipe += `<p>1. Stek eller ugnsbaka 500g ${proteinText} med ${kryddblandning}, <span class="green-text">2 vitlöksklyftor</span> och <span class="green-text">1 hackad lök</span>. Servera med valda tillbehör.</p>`;
-                shoppingList.categories['Kött & Fågel'].push('500g Kycklingfilé (eller fryst)');
-                kontrolleraSkafferiVaror('Vitlök');
-                kontrolleraSkafferiVaror('Lök');
-            }
-        }
+// Receptet för protein
+if (protein === 'nötfärs') {
+    if (carb === 'wraps') {
+        recipe += `<p>1. Stek 500g ${proteinText} tillsammans med ${kryddblandning}, <span class="green-text">2 vitlöksklyftor</span> och <span class="green-text">1 hackad lök</span> tills färsen är genomstekt. Fyll <span class="yellow-text">wraps</span> med färs och tillsätt sås och grönsaker.</p>`;
+        shoppingList.categories['Kött & Fågel'].push('500g Nötfärs');
+        kontrolleraSkafferiVaror('Vitlök');
+        kontrolleraSkafferiVaror('Lök');
+    } else {
+        recipe += `<p>1. Blanda 500g ${proteinText} med ${kryddblandning}, <span class="green-text">2 vitlöksklyftor</span> och <span class="green-text">1 hackad lök</span>. Forma biffar och stek dem i olja tills de är genomstekta.</p>`;
+        shoppingList.categories['Kött & Fågel'].push('500g Nötfärs');
+        kontrolleraSkafferiVaror('Vitlök');
+        kontrolleraSkafferiVaror('Lök');
+    }
+
+    // Kontrollera om kryddningen är "medelhavskryddor" och lägg till fetaost i blandningen
+    if (kryddning === 'medelhavskryddor') {
+        recipe += `<p>2. Blanda i <span class="green-text">100g fetaost</span> i nötfärsblandningen för extra smak.</p>`;
+        shoppingList.categories['Mejeri'].push('100g Fetaost');
+    }
+
+} else if (protein === 'kyckling') {
+    if (carb === 'wraps') {
+        recipe += `<p>1. Strimla 500g ${proteinText} och stek den med ${kryddblandning}, <span class="green-text">2 vitlöksklyftor</span> och <span class="green-text">1 hackad lök</span> tills kycklingen är genomstekt. Fyll <span class="yellow-text">wraps</span> med kyckling, sås och grönsaker.</p>`;
+        shoppingList.categories['Kött & Fågel'].push('500g Kycklingfilé (eller fryst)');
+        kontrolleraSkafferiVaror('Vitlök');
+        kontrolleraSkafferiVaror('Lök');
+    } else {
+        recipe += `<p>1. Stek eller ugnsbaka 500g ${proteinText} med ${kryddblandning}, <span class="green-text">2 vitlöksklyftor</span> och <span class="green-text">1 hackad lök</span>. Servera med valda tillbehör.</p>`;
+        shoppingList.categories['Kött & Fågel'].push('500g Kycklingfilé (eller fryst)');
+        kontrolleraSkafferiVaror('Vitlök');
+        kontrolleraSkafferiVaror('Lök');
+    }
+
+    // Om kryddningen är "medelhavskryddor", lägg till fetaost som ett tillbehör
+    if (kryddning === 'medelhavskryddor') {
+        recipe += `<p>2. Servera <span class="green-text">100g fetaost</span> som tillbehör till kycklingen.</p>`;
+        shoppingList.categories['Mejeri'].push('100g Fetaost');
+    }
+}
 
         // Sås och ingredienser relaterade till sås i blått
         if (sauce === 'guacamole') {
