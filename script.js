@@ -53,7 +53,7 @@ function updateSauceOptions() {
         `;
     } else if (kryddning === 'asiatiskt') {
         sauceOptions = `
-            <button onclick="selectSauce('sojasås')">Sojasås</button>
+            <button onclick="selectSauce('sojamajonäs')">Sojamajonäs</button>
             <button onclick="selectSauce('sesamdressing')">Sesamdressing</button>
         `;
     } else if (kryddning === 'skandinaviskt') {
