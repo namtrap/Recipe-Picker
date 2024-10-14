@@ -60,8 +60,7 @@ const kontrolleraSkafferiVaror = (vara) => {
 // Kryddblandningar baserade på kök (gör texten grön för kryddningar)
 let kryddblandning = '';
 if (kryddning === 'asiatiskt') {
-    kryddblandning = `<span class="green-text">spiskummin, ingefära, Koriander (fryst), Chili (fryst)</span>`;
-    kontrolleraSkafferiVaror('Spiskummin');
+    kryddblandning = `<span class="green-text">ingefära, Koriander (fryst), Chili (fryst)</span>`;  // Spiskummin borttagen
     kontrolleraSkafferiVaror('Ingefära (torkad)');
     kontrolleraSkafferiVaror('Koriander (fryst)');
     kontrolleraSkafferiVaror('Chili (fryst)');
@@ -205,26 +204,28 @@ if (carb === 'bulgursallad') {
 } else if (carb === 'potatis och rotfrukter') {
     recipe += `<p>3. Rosta <span class="yellow-text">600g potatis</span> och <span class="yellow-text">400g rotfrukter</span> (morötter, palsternacka) i olja med salt och peppar i ugnen på 200°C i cirka 30 minuter.</p>`;
     shoppingList.categories['Frukt & Grönt'].push('600g Potatis', '400g Rotfrukter (Morötter, Palsternacka)');
-
-
-
 } else if (carb === 'wraps') {
     if (kryddning === 'asiatiskt') {
-        recipe += `<p>3. Fyll <span class="yellow-text">wraps</span> med kyckling/nötfärs, sås och färska grönsaker som <span class="yellow-text">1 strimlad morot</span> och <span class="yellow-text">1 gurka (skuren i halvmånar)</span>.</p>`;
+        recipe += `<p>3. Fyll <span class="yellow-text">wraps</span> med kyckling/nötfärs, sås och färska grönsaker som <span class="yellow-text">1 strimlad morot</span>, <span class="yellow-text">1 gurka (skuren i halvmånar)</span> och <span class="yellow-text">100g bok choy</span>.</p>`;
         shoppingList.categories['Skafferi'].push('Wraps');
-        shoppingList.categories['Frukt & Grönt'].push('1 Morot', '1 Gurka');
+        shoppingList.categories['Frukt & Grönt'].push('1 Morot', '1 Gurka', '100g Bok Choy');
     } else {
         recipe += `<p>3. Fyll <span class="yellow-text">wraps</span> med kyckling/nötfärs, sås och färska grönsaker som <span class="yellow-text">2 tomater</span>, <span class="yellow-text">1 gurka</span> och sallad.</p>`;
         shoppingList.categories['Skafferi'].push('Wraps');
         shoppingList.categories['Frukt & Grönt'].push('2 Tomater', '1 Gurka', 'Sallad');
     }
-
-
-
 } else if (carb === 'ris') {
-    recipe += `<p>3. Koka <span class="yellow-text">2 dl ris</span> och servera med kyckling/nötfärs och sås.</p>`;
-    shoppingList.categories['Skafferi'].push('2 dl Ris');
+    if (kryddning === 'asiatiskt') {
+        recipe += `<p>3. Koka <span class="yellow-text">2 dl ris</span> och servera med strimlade grönsaker som <span class="yellow-text">1 morot</span>, <span class="yellow-text">1 paprika</span> och <span class="yellow-text">100g bok choy</span>. Stek dem lätt i olja för en härlig wok.</p>`;
+        shoppingList.categories['Skafferi'].push('2 dl Ris');
+        shoppingList.categories['Frukt & Grönt'].push('1 Morot', '1 Paprika', '100g Bok Choy');
+    } else {
+        recipe += `<p>3. Koka <span class="yellow-text">2 dl ris</span> och servera med kyckling/nötfärs och sås.</p>`;
+        shoppingList.categories['Skafferi'].push('2 dl Ris');
+    }
 }
+
+
 
 // Generera slutligt recept och inköpslista i kategorier
 let shoppingOutput = `
